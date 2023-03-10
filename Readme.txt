@@ -21,8 +21,4 @@ Starvation free Readers-Writers Solution
   6.	notify() – This function notifies all the processes present in the queue that a read/write process is ended, and it can again try to access the database. This function notifies the processes in FCFS order.
 
 
- The basic idea in this solution to prevent starvation is to give chance to any possible waiting reader after a write operation is performed or give chance to any possible waiting writing process after a read is performed on the database with the help of readersTurn variable. In this way we can achieve alternation between reading and writing processes and hence starvation is prevented. 
-
-                                                                                                                                                                                                         Name – Piyush Arya         
-                                                                                                                                                                                                         Enrolment no. – 21114074
-                                                                                                                                                                                                         Branch, Batch – CSE, O3
+ The basic idea in this solution to prevent starvation is to give chance to any possible waiting reader after a write operation is performed or give chance to any possible waiting writing process after a read is performed on the database with the help of readersTurn variable. In this way we can achieve alternation between reading and writing processes and hence starvation is prevented.
