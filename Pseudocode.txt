@@ -1,0 +1,48 @@
+Below is the pseudocode of the function which will prevent starvation in reader-writer problem.
+
+1. Declare class Database.
+2. In database declare -
+      int reader = 0;
+      bool writing = false;
+      int waitingWriters = 0;
+      bool readersTurn = false;
+      Queue Q to store waiting readers or writers
+3. Declare thread functions- acquireRead(), acquireWrite(), releaseRead(), releaseWrite().
+
+
+Pseudocode for acquireRead() -
+1. while(writing || (waitingWriters>0 && !readersTurn)){
+    call wait() function;
+   }
+2. wait(mutex1);                // mutex1 initialized to 1
+       readers++;
+   signal(mutex1);
+
+
+Pseudocode for acquireWrite() -
+1. while(readers>0 || writing){
+    wait(mutex2);               // mutex2 initialized to 1
+        waitingWriters++;
+    signal(mutex2);
+    call wait() function;
+   }
+2. if(waitingWriters>0){
+    wait(mutex2);
+        waitingWriters--;
+    signal(mutex2);
+   }
+3. writing = true;
+
+
+Pseudocode for releaseRead() -
+1. wait(mutex1);
+       readers--;
+    signal(mutex1);
+2. readersTurn = false;
+3. if(readers==0) notify();
+
+
+Pseudocode for releaseWrite() -
+1. writing = false;
+2. readersTurn = true;
+3. notify();
